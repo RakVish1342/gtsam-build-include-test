@@ -111,19 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named odomLib
-
-# Build rule for target.
-odomLib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 odomLib
-.PHONY : odomLib
-
-# fast build rule for target.
-odomLib/fast:
-	$(MAKE) -f CMakeFiles/odomLib.dir/build.make CMakeFiles/odomLib.dir/build
-.PHONY : odomLib/fast
-
-#=============================================================================
 # Target rules for targets named gtsamExe
 
 # Build rule for target.
@@ -136,14 +123,27 @@ gtsamExe/fast:
 	$(MAKE) -f CMakeFiles/gtsamExe.dir/build.make CMakeFiles/gtsamExe.dir/build
 .PHONY : gtsamExe/fast
 
+#=============================================================================
+# Target rules for targets named odomLib
+
+# Build rule for target.
+odomLib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 odomLib
+.PHONY : odomLib
+
+# fast build rule for target.
+odomLib/fast:
+	$(MAKE) -f CMakeFiles/odomLib.dir/build.make CMakeFiles/odomLib.dir/build
+.PHONY : odomLib/fast
+
 src/OdometryExample.o: src/OdometryExample.cpp.o
 
 .PHONY : src/OdometryExample.o
 
 # target to build an object file
 src/OdometryExample.cpp.o:
-	$(MAKE) -f CMakeFiles/odomLib.dir/build.make CMakeFiles/odomLib.dir/src/OdometryExample.cpp.o
 	$(MAKE) -f CMakeFiles/gtsamExe.dir/build.make CMakeFiles/gtsamExe.dir/src/OdometryExample.cpp.o
+	$(MAKE) -f CMakeFiles/odomLib.dir/build.make CMakeFiles/odomLib.dir/src/OdometryExample.cpp.o
 .PHONY : src/OdometryExample.cpp.o
 
 src/OdometryExample.i: src/OdometryExample.cpp.i
@@ -152,8 +152,8 @@ src/OdometryExample.i: src/OdometryExample.cpp.i
 
 # target to preprocess a source file
 src/OdometryExample.cpp.i:
-	$(MAKE) -f CMakeFiles/odomLib.dir/build.make CMakeFiles/odomLib.dir/src/OdometryExample.cpp.i
 	$(MAKE) -f CMakeFiles/gtsamExe.dir/build.make CMakeFiles/gtsamExe.dir/src/OdometryExample.cpp.i
+	$(MAKE) -f CMakeFiles/odomLib.dir/build.make CMakeFiles/odomLib.dir/src/OdometryExample.cpp.i
 .PHONY : src/OdometryExample.cpp.i
 
 src/OdometryExample.s: src/OdometryExample.cpp.s
@@ -162,8 +162,8 @@ src/OdometryExample.s: src/OdometryExample.cpp.s
 
 # target to generate assembly for a file
 src/OdometryExample.cpp.s:
-	$(MAKE) -f CMakeFiles/odomLib.dir/build.make CMakeFiles/odomLib.dir/src/OdometryExample.cpp.s
 	$(MAKE) -f CMakeFiles/gtsamExe.dir/build.make CMakeFiles/gtsamExe.dir/src/OdometryExample.cpp.s
+	$(MAKE) -f CMakeFiles/odomLib.dir/build.make CMakeFiles/odomLib.dir/src/OdometryExample.cpp.s
 .PHONY : src/OdometryExample.cpp.s
 
 # Help Target
@@ -173,9 +173,9 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... odomLib"
 	@echo "... rebuild_cache"
 	@echo "... gtsamExe"
+	@echo "... odomLib"
 	@echo "... src/OdometryExample.o"
 	@echo "... src/OdometryExample.i"
 	@echo "... src/OdometryExample.s"

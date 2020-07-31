@@ -30,16 +30,13 @@ include_directories(${GTSAM_INCLUDE_DIR})
 ###################################
 
 
-## Create a C++ library/object file for all the user source files
-add_library(odomLib src/OdometryExample.cpp)
-
-## Attach/Link gtsam to this library
-target_link_libraries(odomLib
-  gtsam)
 
 ## Create the actual exe file for the given source files
 add_executable(gtsamExe src/OdometryExample.cpp)
 
-## Attach/Link user/source libs to this exe
-target_link_libraries(gtsamExe
-  odomLib)
+## Create a C++ library/object file for all the user source files
+add_library(odomLib src/OdometryExample.cpp)
+## Attach/Link gtsam to this library
+target_link_libraries(odomLib gtsam)
+## Attach/Link user/source libs to the exe
+target_link_libraries(gtsamExe odomLib)
