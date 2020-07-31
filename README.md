@@ -5,7 +5,7 @@ The pre-included example binaries will run out of the box most likely. However w
 **System:** Ubuntu 18.04, GTSAM , Boost-dev 1.65.1, cmake 3.10.2
 
 
-####Installation Steps for GTSAM:
+#### Installation Steps for GTSAM:
 
 1. Install the pre-requirsites:
 
@@ -31,7 +31,7 @@ make check (Optional: long set of conditional checks)
 make install (Long installation process. It mainly builds some .so files (and cmake compiler directive files) and adds them to /usr/local/lib.)
 ```
 
-With this GTSAM should be installed. To include it in other projects:
+With this, GTSAM should be installed. To include it in other projects:
 
 1. Create a project folder like this repo
 2. Then create a build directory, cmake and make the project.
