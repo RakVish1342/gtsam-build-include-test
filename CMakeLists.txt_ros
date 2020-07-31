@@ -1,0 +1,82 @@
+## Reference1: https://stackoverflow.com/questions/44395859/how-to-use-the-c-library-gtsam-in-my-project-package
+##Reference2: https://github.com/raulmur/ORB_SLAM2/issues/494
+##Reference3: https://bitbucket.org/gtborg/gtsam/issues/360/couldnt-build-examples, https://github.com/dongjing3309/gtsam-examples
+
+cmake_minimum_required(VERSION 3.0)
+project(testGTSAM)
+
+add_compile_options(-std=c++11)
+
+#find_package(catkin REQUIRED COMPONENTS
+#  geometry_msgs
+#  message_generation
+#  nav_msgs
+#  roscpp
+#  sensor_msgs
+#  std_msgs
+#)
+
+###### GTSAM STUFF STARTS HERE
+
+# Include GTSAM CMake tools
+find_package(GTSAMCMakeTools)
+#include(GtsamBuildTypes) # Load build type flags and default to Debug mode
+#include(GtsamTesting)    # Easy functions for creating unit tests and scripts
+#include(GtsamMatlabWrap) # Automatic MATLAB wrapper generation
+
+# Ensure that local folder is searched before library folders
+#include_directories(BEFORE "${PROJECT_SOURCE_DIR}")
+
+###################################################################################
+# Find GTSAM components
+find_package(GTSAM REQUIRED) # Uses installed package
+include_directories(${GTSAM_INCLUDE_DIR})
+
+###################################################################################
+# Build static library from common sources
+#set(CONVENIENCE_LIB_NAME ${PROJECT_NAME})
+#add_library(${CONVENIENCE_LIB_NAME} STATIC include/car/car_lib.h src/car_lib.cpp)
+#target_link_libraries(${CONVENIENCE_LIB_NAME} gtsam)
+
+###### GTSAM STUFF ENDS HERE
+
+#catkin_package(
+#  INCLUDE_DIRS include
+#  LIBRARIES car_lib
+#  CATKIN_DEPENDS
+#  geometry_msgs
+#  message_runtime
+#  nav_msgs
+#  roscpp
+#  sensor_msgs
+#  std_msgs
+#)
+
+#include_directories(
+#  include
+#  ${catkin_INCLUDE_DIRS}
+#)
+
+## Declare a C++ library
+#add_library(car_lib
+#  include/${PROJECT_NAME}/car_lib.h
+#  src/car_lib.cpp)
+#
+#add_executable(car_node src/car_node)
+#target_link_libraries(car_node ${catkin_LIBRARIES})
+#target_link_libraries(car_lib
+#  ${catkin_LIBRARIES})
+
+
+## Declare a C++ library
+add_library(gtsamLib src/OdometryExample.cpp)
+target_link_libraries(gtsamLib
+  gtsam)
+#  ${catkin_LIBRARIES})
+
+add_executable(gtsamExe src/OdometryExample.cpp)
+
+target_link_libraries(gtsamExe
+  gtsamLib
+  gtsam)
+#  ${catkin_LIBRARIES})

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libodomLib.a  CMakeFiles/odomLib.dir/src/OdometryExample.cpp.o
+/usr/bin/ranlib libodomLib.a
